@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <linearGradient id="paperLightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F2" />
+      <stop offset="50%" stop-color="#F3EEE4" />
+      <stop offset="100%" stop-color="#EAE3D2" />
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#FFFDF9" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#F3EEE4" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="inkFlourish" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#B79A5B" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#3B2B20" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#0B0B0A" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#paperLightBg)" />
+  <rect width="1600" height="900" fill="url(#sunGlow)" />
+
+  <!-- Elegant light watermark calligraphy strokes -->
+  <g opacity="0.85">
+    <path d="M 150 750 C 350 250, 750 150, 1250 320 C 1450 390, 1380 720, 1000 780 C 720 820, 520 620, 650 440 C 740 310, 1020 340, 1080 480" 
+          fill="none" stroke="url(#inkFlourish)" stroke-width="40" stroke-linecap="round" />
+  </g>
+
+  <!-- Fine geometric guidelines for classical calligraphy (خطوط الميزان والسطر) -->
+  <line x1="100" y1="450" x2="1500" y2="450" stroke="#B79A5B" stroke-opacity="0.1" stroke-dasharray="12 12" stroke-width="1.5" />
+  <line x1="100" y1="350" x2="1500" y2="350" stroke="#B79A5B" stroke-opacity="0.06" stroke-dasharray="8 8" stroke-width="1" />
+  <line x1="100" y1="550" x2="1500" y2="550" stroke="#B79A5B" stroke-opacity="0.06" stroke-dasharray="8 8" stroke-width="1" />
+</svg>

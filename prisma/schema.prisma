@@ -1,0 +1,267 @@
+// Prisma Schema for Suhail Nasr Calligraphy Atelier
+// Mapped precisely to Section 20 of REQUIREMENTS.md
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ArtistProfile {
+  id             String   @id @default(cuid())
+  nameAr         String   @default("سهيل نصر")
+  nameEn         String   @default("Suhail Nasr")
+  titleAr        String   @default("خطاط وفنان للحرف العربي")
+  titleEn        String   @default("Arabic Calligrapher & Lettering Artist")
+  bioAr          String
+  bioEn          String?
+  philosophyAr   String   @default("حين يصبح الحرف أثراً.")
+  philosophyEn   String?  @default("When the letter becomes an imprint.")
+  profileImage   String?
+  coverImage     String?
+  phone          String?  @default("+966553172286")
+  whatsapp       String?  @default("966553172286")
+  email          String?
+  snapchatUrl    String   @default("https://www.snapchat.com/@Sohilnasr7")
+  instagramUrl   String?  @default("https://www.instagram.com/sohil.nassr")
+  tiktokUrl      String?  @default("https://www.tiktok.com/@.sohil_nassr77")
+  location       String   @default("الرياض، المملكة العربية السعودية")
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Work {
+  id             String      @id @default(cuid())
+  titleAr        String
+  titleEn        String?
+  slug           String      @unique
+  excerptAr      String?
+  excerptEn      String?
+  descriptionAr  String?
+  descriptionEn  String?
+  coverImage     String
+  featured       Boolean     @default(false)
+  published      Boolean     @default(true)
+  year           Int?
+  dimensions     String?
+  
+  categoryId     String?
+  category       Category?   @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  
+  materialId     String?
+  material       Material?   @relation(fields: [materialId], references: [id], onDelete: SetNull)
+  
+  techniqueId    String?
+  technique      Technique?  @relation(fields: [techniqueId], references: [id], onDelete: SetNull)
+  
+  styleId        String?
+  style          Style?      @relation(fields: [styleId], references: [id], onDelete: SetNull)
+  
+  media          WorkMedia[]
+  
+  seoTitle       String?
+  seoDescription String?
+  publishedAt    DateTime?   @default(now())
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model WorkMedia {
+  id        String   @id @default(cuid())
+  workId    String
+  work      Work     @relation(fields: [workId], references: [id], onDelete: Cascade)
+  url       String
+  type      String   @default("image") // image, video
+  altAr     String?
+  altEn     String?
+  captionAr String?
+  captionEn String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id            String   @id @default(cuid())
+  nameAr        String
+  nameEn        String?
+  slug          String   @unique
+  descriptionAr String?
+  works         Work[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Material {
+  id            String   @id @default(cuid())
+  nameAr        String
+  nameEn        String?
+  slug          String   @unique
+  descriptionAr String?
+  descriptionEn String?
+  coverImage    String?
+  works         Work[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Technique {
+  id            String   @id @default(cuid())
+  nameAr        String
+  nameEn        String?
+  descriptionAr String?
+  descriptionEn String?
+  works         Work[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Style {
+  id            String   @id @default(cuid())
+  nameAr        String
+  nameEn        String?
+  descriptionAr String?
+  descriptionEn String?
+  works         Work[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model JournalPost {
+  id             String    @id @default(cuid())
+  titleAr        String
+  titleEn        String?
+  slug           String    @unique
+  excerptAr      String?
+  excerptEn      String?
+  contentAr      String
+  contentEn      String?
+  coverImage     String?
+  category       String    @default("من الاستوديو")
+  tags           String?   // Comma-separated list
+  published      Boolean   @default(true)
+  publishedAt    DateTime? @default(now())
+  author         String    @default("سهيل نصر")
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Event {
+  id            String    @id @default(cuid())
+  titleAr       String
+  titleEn       String?
+  descriptionAr String?
+  descriptionEn String?
+  location      String?
+  startDate     DateTime?
+  endDate       DateTime?
+  coverImage    String?
+  gallery       String?   // JSON array string
+  externalUrl   String?
+  status        String    @default("upcoming") // upcoming, ongoing, past
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Service {
+  id            String   @id @default(cuid())
+  titleAr       String
+  titleEn       String?
+  descriptionAr String?
+  descriptionEn String?
+  coverImage    String?
+  active        Boolean  @default(true)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model CommissionRequest {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String
+  email         String?
+  workType      String?
+  material      String?
+  requestedText String?
+  dimensions    String?
+  quantity      Int      @default(1)
+  budget        String?
+  deadline      String?
+  message       String?
+  attachments   String?  // JSON array string of file paths/urls
+  status        String   @default("new") // new, reviewing, contacted, approved, in_progress, completed, cancelled
+  internalNotes String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model SocialPost {
+  id          String   @id @default(cuid())
+  provider    String   @default("snapchat")
+  title       String
+  url         String
+  thumbnail   String?
+  description String?
+  publishedAt DateTime @default(now())
+  featured    Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model MediaItem {
+  id        String   @id @default(cuid())
+  title     String?
+  filename  String
+  url       String
+  mimeType  String
+  size      Int
+  altAr     String?
+  altEn     String?
+  folder    String   @default("general")
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id              String   @id @default("default")
+  siteNameAr      String   @default("الخطاط سهيل نصر")
+  siteNameEn      String   @default("Suhail Nasr Calligraphy Atelier")
+  taglineAr       String   @default("حين يصبح الحرف أثراً.")
+  taglineEn       String   @default("When the letter becomes an imprint.")
+  contactPhone    String?  @default("+966 55 317 2286")
+  contactWhatsapp String?  @default("966553172286")
+  contactEmail    String?
+  snapchatUrl     String   @default("https://www.snapchat.com/@Sohilnasr7")
+  instagramUrl    String?  @default("https://www.instagram.com/sohil.nassr")
+  tiktokUrl       String?  @default("https://www.tiktok.com/@.sohil_nassr77")
+  location        String   @default("الرياض، المملكة العربية السعودية")
+  metaKeywords    String?  @default("خط عربي, سهيل نصر, خطاط الرياض, كتابة على الزجاج, كتابة على الخشب, سبح, مخمل")
+  updatedAt       DateTime @updatedAt
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  action      String
+  entityType  String
+  entityId    String?
+  details     String?
+  performedBy String?
+  createdAt   DateTime @default(now())
+}

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="aharPaper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7F3EB" />
+      <stop offset="50%" stop-color="#EFE8D8" />
+      <stop offset="100%" stop-color="#E5DEC9" />
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="65%">
+      <stop offset="70%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#6B5944" stop-opacity="0.25" />
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#aharPaper)" />
+  <rect width="800" height="600" fill="url(#vignette)" />
+
+  <!-- Classical Gold Border Frame (تذهيب كلاسيكي) -->
+  <rect x="50" y="50" width="700" height="500" fill="none" stroke="#B79A5B" stroke-width="2.5" opacity="0.6" />
+  <rect x="60" y="60" width="680" height="480" fill="none" stroke="#B79A5B" stroke-width="1" opacity="0.4" />
+
+  <!-- Master Classical Carbon Ink Thuluth Composition -->
+  <g transform="translate(40, 20)">
+    <path d="M 230 360 C 260 170, 360 140, 520 180 C 650 210, 610 380, 480 410 C 330 440, 230 340, 290 230 C 340 150, 470 170, 500 250 C 510 320, 440 350, 380 330" 
+          fill="none" stroke="#0B0B0A" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 320 130 C 360 90, 460 90, 500 120" fill="none" stroke="#0B0B0A" stroke-width="12" stroke-linecap="round" />
+    <circle cx="330" cy="95" r="8" fill="#0B0B0A" />
+    <circle cx="480" cy="90" r="7" fill="#0B0B0A" />
+    <!-- Classical Diacritics (حركات الثلث) -->
+    <path d="M 400 170 Q 420 150 440 170" fill="none" stroke="#0B0B0A" stroke-width="5" stroke-linecap="round" />
+    <path d="M 300 280 Q 280 290 290 310" fill="none" stroke="#0B0B0A" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- Traditional Calligrapher Signature Stamp (خاتم الخطاط) -->
+  <g transform="translate(620, 440)">
+    <circle cx="30" cy="30" r="28" fill="#7A1D1D" opacity="0.85" />
+    <circle cx="30" cy="30" r="25" fill="none" stroke="#FAF8F2" stroke-width="1" opacity="0.8" />
+    <text x="30" y="35" text-anchor="middle" font-family="'Amiri', serif" font-size="14" fill="#FAF8F2">سهيل</text>
+  </g>
+
+  <!-- Title watermark -->
+  <text x="700" y="560" text-anchor="end" font-family="'Amiri', serif" font-size="16" fill="#3B2B20" fill-opacity="0.8">تكوين الثلث الجلي على ورق مقهر — سهيل نصر</text>
+</svg>

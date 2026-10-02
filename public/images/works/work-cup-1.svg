@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ceramicBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181817" />
+      <stop offset="50%" stop-color="#111110" />
+      <stop offset="100%" stop-color="#080807" />
+    </linearGradient>
+    <linearGradient id="cupGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a2a28" />
+      <stop offset="30%" stop-color="#3d3d3a" />
+      <stop offset="70%" stop-color="#262624" />
+      <stop offset="100%" stop-color="#161615" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#ceramicBg)" />
+
+  <!-- Pedestal shadow -->
+  <ellipse cx="400" cy="460" rx="180" ry="25" fill="#000000" opacity="0.6" filter="blur(15px)" />
+
+  <!-- Ceramic Cup Silhouette -->
+  <g transform="translate(240, 140)">
+    <path d="M 60 40 L 260 40 L 230 280 Q 160 300 90 280 Z" fill="url(#cupGrad)" stroke="#4a4a46" stroke-width="1.5" />
+    <!-- Handle -->
+    <path d="M 250 80 C 330 90, 330 220, 235 230" fill="none" stroke="#2e2e2b" stroke-width="20" stroke-linecap="round" />
+    <path d="M 250 80 C 330 90, 330 220, 235 230" fill="none" stroke="#3d3d3a" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Calligraphy wrapped around cup -->
+    <path d="M 85 160 C 120 150, 160 170, 210 150" fill="none" stroke="#D0BB88" stroke-width="6" stroke-linecap="round" />
+    <path d="M 100 200 C 140 180, 180 210, 220 185" fill="none" stroke="#B79A5B" stroke-width="5" stroke-linecap="round" />
+    <circle cx="115" cy="135" r="3.5" fill="#D0BB88" />
+    <circle cx="170" cy="130" r="3" fill="#D0BB88" />
+  </g>
+
+  <!-- Title watermark -->
+  <text x="700" y="540" text-anchor="end" font-family="'Amiri', serif" font-size="18" fill="#B79A5B" fill-opacity="0.8">كتابة يدوية خاصة على الخزف — سهيل نصر</text>
+  <text x="100" y="540" text-anchor="start" font-family="sans-serif" font-size="12" letter-spacing="3" fill="#B79A5B" fill-opacity="0.4">SUHAIL NASR • ATELIER</text>
+</svg>

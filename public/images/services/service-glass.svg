@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <rect width="600" height="400" fill="#0f1418" />
+  <path d="M 150 250 C 250 150, 350 150, 450 250" stroke="#B79A5B" stroke-width="6" fill="none" stroke-linecap="round" />
+  <circle cx="300" cy="180" r="8" fill="#D0BB88" />
+  <text x="300" y="340" text-anchor="middle" font-family="'Amiri', serif" font-size="20" fill="#FAF8F2">الكتابة والحفر على الزجاج</text>
+</svg>

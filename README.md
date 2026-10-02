@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# منصة ومعرض الخطاط سهيل نصر — SUHAIL NASR Digital Atelier
 
-## Getting Started
+> **«حين يصبح الحرف أثراً.»**  
+> *When the letter becomes an imprint.*
 
-First, run the development server:
+أتيليه رقمي ومعرض فني فاخر للخطاط السعودي **سهيل نصر** في الرياض، صُمم بمستوى تحفة رقمية تجمع بين الهوية الثقافية العربية الأصيلة والواجهة التحريرية الرفيعة (Editorial Luxury).
 
+---
+
+## 🏛️ الرؤية والضوابط الفنية
+
+1. **العمل الفني هو البطل (Art First):** الواجهة إطار يحتفي باللوحة والخامة ولا ينافسها.
+2. **فخامة تحريرية (Editorial Luxury):** استلهام من كتالوجات المتاحف والمعارض الفنية الخاصة العالمية بدلاً من قوالب المواقع التجارية المكررة.
+3. **أصالة عربية وتصميم RTL أصيل:** اتجاه عربي كامل (`dir="rtl"`) مع خطوط عرض طباعية عربية معتمدة (`Amiri` لعناوين العرض و `IBM Plex Sans Arabic` للنصوص والواجهات).
+4. **المصداقية المطلقة والبيانات الحقيقية:**
+   - الحساب المرجعي الموثق: سناب شات `https://www.snapchat.com/@sohilnasr7`.
+   - التخصصات المعتمدة: الكتابة على الخامات المتعددة (الزجاج، الخشب، الأكواب، السبح، المخمل، السجاد، الورق).
+   - الالتزام بعدم اختلاق أي جوائز أو إحصائيات أو شهادات غير موثقة.
+
+---
+
+## 🛠️ حزمة التقنيات (Technical Stack)
+
+- **إطار العمل:** [Next.js](https://nextjs.org) (App Router) مع TypeScript.
+- **التنسيق:** Tailwind CSS مع متغيرات CSS مخصصة للتحكم الدقيق بالألوان والتباين.
+- **الحركة التفاعلية:** Framer Motion مع دعم كامل لتفضيل تقليل الحركة (`prefers-reduced-motion`).
+- **قاعدة البيانات:** SQLite (بيئة التطوير والتشغيل الفوري) / توافق كامل للترحيل إلى PostgreSQL عبر Prisma ORM.
+- **الأمان والمصادقة:** تشفير كلمات المرور بـ `bcryptjs`، وجلسات مشفرة بـ JWT عبر `jose`، وملفات تعريف ارتباط محمية (`httpOnly`, `SameSite=Lax`).
+- **التحقق من البيانات:** Zod لحماية جميع استمارات الإدخال والـ Server Actions.
+
+---
+
+## 📂 حزمة التوثيق الفني (Documentation Suite)
+
+يحتوي المستودع على وثائق تفصيلية متكاملة وفقاً لمتطلبات `REQUIREMENTS.md`:
+
+- [`REQUIREMENTS.md`](file:///c:/Users/WESAM%20_HK/Desktop/الخطاط%20سهيل%20نصر/REQUIREMENTS.md) — وثيقة المواصفات الفنية والمتطلبات الكاملة (v1.0.0).
+- [`AUDIT.md`](file:///c:/Users/WESAM%20_HK/Desktop/الخطاط%20سهيل%20نصر/AUDIT.md) — تقرير تدقيق المستودع والقرارات المعمارية المعتمدة.
+- [`ARCHITECTURE.md`](file:///c:/Users/WESAM%20_HK/Desktop/الخطاط%20سهيل%20نصر/ARCHITECTURE.md) — الهيكل المعماري، شجرة المجلدات، وتدفق البيانات.
+- [`DATABASE.md`](file:///c:/Users/WESAM%20_HK/Desktop/الخطاط%20سهيل%20نصر/DATABASE.md) — توثيق مخطط الكيانات والعلاقات (Prisma Schema).
+- [`SECURITY.md`](file:///c:/Users/WESAM%20_HK/Desktop/الخطاط%20سهيل%20نصر/SECURITY.md) — الإجراءات الأمنية، الترويسات، وحماية مسارات لوحة التحكم.
+- [`PERFORMANCE.md`](file:///c:/Users/WESAM%20_HK/Desktop/الخطاط%20سهيل%20نصر/PERFORMANCE.md) — معايير سرعة التحميل واستهداف Core Web Vitals.
+- [`SEO.md`](file:///c:/Users/WESAM%20_HK/Desktop/الخطاط%20سهيل%20نصر/SEO.md) — استراتيجية الكلمات المفتاحية ومحرك البحث العربي.
+
+---
+
+## 🚀 التثبيت والتشغيل المحلي
+
+### 1. تثبيت الحزم:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. تهيئة وتغذية قاعدة البيانات:
+```bash
+npx prisma db push
+npm run seed
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. تشغيل خادم التطوير:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ثم افتح المتصفح على: `http://localhost:3000`
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🔐 بيانات دخول لوحة تحكم الإدارة (Admin CMS)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **رابط الدخول:** `http://localhost:3000/admin/login`
+- **البريد الإلكتروني:** `admin@suhailnasr.art`
+- **كلمة المرور الافتراضية:** `Atelier@Suhail2026`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧭 خريطة المسارات المعتمدة
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| المسار | الوصف |
+| :--- | :--- |
+| `/` | الصفحة الرئيسية (8 أقسام تحريرية من الافتتاحية إلى دعوة الطلب الخاص) |
+| `/works` | معرض الأعمال مع فلاتر الخامات ومحرك البحث العربي المطور |
+| `/works/[slug]` | صفحة تفاصيل العمل الفني والبيانات التقنية والأعمال ذات الصلة |
+| `/materials` | أرشيف الخامات (الزجاج، الخشب، المخمل، السجاد، الأكواب، السبح) |
+| `/materials/[slug]` | صفحة استعراض الخامة والأعمال المنفذة عليها |
+| `/styles` | أساليب ومدارس الخط المؤكدة في قاعدة البيانات |
+| `/journal` | دفتر الحرف — مقالات وتأملات في فن الخط العربي |
+| `/journal/[slug]` | تفاصيل تدوينة دفتر الحرف |
+| `/services` | الخدمات الفنية المعتمدة |
+| `/about` | سيرة وفلسفة الخطاط سهيل نصر في الرياض |
+| `/contact` | التواصل المباشر (واتساب، اتصال هاتفي، سناب شات) |
+| `/commission` | نموذج طلب الأعمال المخصصة بالتحقق الخادمي الصارم |
+| `/admin` | لوحة تحكم الإدارة والمؤشرات |
+| `/admin/works` | إدارة الأعمال الفنية وإضافة عمل جديد |
+| `/admin/requests` | صندوق متابعة طلبات اللوحات وتحديث مراحلها |
+| `/admin/journal` | إدارة مقالات دفتر الحرف |
+| `/admin/social` | إدارة بطاقات سناب شات المنسقة |
+| `/admin/materials` | إدارة الخامات |
+| `/admin/settings` | إعدادات الملف الشخصي والبيانات الرسمية |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📜 رخصة الاستخدام وحقوق الملكية
+
+© 2026 سهيل نصر — Suhail Nasr. جميع الحقوق الفنية والتصميمية محفوظة.

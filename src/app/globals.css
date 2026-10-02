@@ -1,26 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Lateef:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Rakkas&family=Reem+Kufi:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0B0B0A;
+  --ink-soft: #171614;
+  --paper: #F3EEE4;
+  --paper-light: #FAF8F2;
+  --gold: #B79A5B;
+  --gold-soft: #D0BB88;
+  --wood: #3B2B20;
+  --muted: #817A6D;
+  --line: rgba(11, 11, 10, 0.12);
+
+  --bg-primary: #FAF8F2;
+  --surface-primary: #F3EEE4;
+  --text-primary: #0B0B0A;
+  --text-muted: #817A6D;
+
+  --dark-bg: #090909;
+  --dark-surface: #11100F;
+  --dark-text: #F2EDE3;
+  --dark-muted: #A49D91;
+  --dark-line: rgba(242, 237, 227, 0.1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-ink: #0B0B0A;
+  --color-ink-soft: #171614;
+  --color-paper: #F3EEE4;
+  --color-paper-light: #FAF8F2;
+  --color-gold: #B79A5B;
+  --color-gold-soft: #D0BB88;
+  --color-wood: #3B2B20;
+  --color-muted: #817A6D;
+  --color-dark-bg: #090909;
+  --color-dark-surface: #11100F;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-ibm-plex-arabic), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Luxury Editorial Calligraphy Typography */
+.font-display {
+  font-family: var(--font-amiri), "Amiri", serif;
+}
+
+.font-sans-ar {
+  font-family: var(--font-ibm-plex-arabic), sans-serif;
+}
+
+.font-thuluth {
+  font-family: var(--font-amiri), "Amiri", serif;
+}
+
+.font-diwani {
+  font-family: 'Rakkas', var(--font-amiri), serif;
+}
+
+.font-kufi {
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.font-ruqaa {
+  font-family: 'Aref Ruqaa', serif;
+}
+
+.font-naskh {
+  font-family: 'Noto Naskh Arabic', serif;
+}
+
+.font-nastaliq {
+  font-family: 'Lateef', serif;
+}
+
+/* Selection Color with Antique Gold */
+::selection {
+  background-color: #B79A5B;
+  color: #0B0B0A;
+}
+
+/* Editorial subtle borders */
+.border-editorial {
+  border-color: var(--line);
+}
+
+.dark-mode-surface {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* Subtle grain overlay */
+.paper-grain {
+  background-image: radial-gradient(rgba(11, 11, 10, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.dark-paper-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Respect user's motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

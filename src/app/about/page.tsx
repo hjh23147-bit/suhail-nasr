@@ -2,12 +2,12 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpLeft, ExternalLink, MapPin, ShieldCheck, Sparkles, PenTool } from "lucide-react";
-import { db } from "@/lib/db";
+import { getArtistProfile } from "@/lib/queries";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Footer } from "@/components/layout/Footer";
 import { AtelierVisionSection } from "@/components/gallery/AtelierVisionSection";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "عن الخطاط سهيل نصر — المسيرة والأثر الفني",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const profile = await db.artistProfile.findFirst();
+  const profile = await getArtistProfile();
 
   return (
     <>

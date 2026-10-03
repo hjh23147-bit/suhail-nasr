@@ -2,12 +2,12 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Phone, MapPin, ExternalLink, ArrowUpLeft, ShieldCheck, Sparkles } from "lucide-react";
-import { db } from "@/lib/db";
+import { getArtistProfile } from "@/lib/queries";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Footer } from "@/components/layout/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "التواصل والحسابات الرسمية — الخطاط سهيل نصر",
@@ -15,11 +15,10 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const profile = await db.artistProfile.findFirst();
-  const settings = await db.siteSettings.findFirst();
+  const profile = await getArtistProfile();
 
-  const phone = profile?.phone || settings?.contactPhone || "+966 55 317 2286";
-  const whatsapp = profile?.whatsapp || settings?.contactWhatsapp || "966553172286";
+  const phone = profile?.phone || "+966 55 317 2286";
+  const whatsapp = profile?.whatsapp || "966553172286";
   const snapchatUrl = profile?.snapchatUrl || "https://www.snapchat.com/@Sohilnasr7";
   const instagramUrl = profile?.instagramUrl || "https://www.instagram.com/sohil.nassr";
   const tiktokUrl = profile?.tiktokUrl || "https://www.tiktok.com/@.sohil_nassr77";

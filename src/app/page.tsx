@@ -1,7 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpLeft, ArrowDown, ExternalLink, ShieldCheck, MapPin, Sparkles } from "lucide-react";
-import { db } from "@/lib/db";
+import {
+  getArtistProfile,
+  getFeaturedWorks,
+  getMaterialsList,
+  getJournalList,
+  getSocialList,
+} from "@/lib/queries";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Footer } from "@/components/layout/Footer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -15,39 +21,18 @@ import { FlowingCalligraphyStream } from "@/components/motion/FlowingCalligraphy
 import { AtelierVideoReels } from "@/components/gallery/AtelierVideoReels";
 import { AtelierVisionSection } from "@/components/gallery/AtelierVisionSection";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function HomePage() {
-  const profile = await db.artistProfile.findFirst();
-  const featuredWorks = await db.work.findMany({
-    where: { published: true },
-    include: { material: true, technique: true },
-    orderBy: { createdAt: "desc" },
-    take: 6,
-  });
+  const profile = await getArtistProfile();
+  const featuredWorks = await getFeaturedWorks(6);
 
   const signatureWork =
-    featuredWorks.find((w) => w.slug === "glass-imprint-crystalline") || featuredWorks[0];
+    featuredWorks.find((w: any) => w.slug === "glass-imprint-crystalline") || featuredWorks[0];
 
-  const materials = await db.material.findMany({
-    include: {
-      _count: {
-        select: { works: true },
-      },
-    },
-    take: 8,
-  });
-
-  const journalPosts = await db.journalPost.findMany({
-    where: { published: true },
-    orderBy: { publishedAt: "desc" },
-    take: 2,
-  });
-
-  const socialPosts = await db.socialPost.findMany({
-    where: { featured: true },
-    take: 2,
-  });
+  const materials = await getMaterialsList(8);
+  const journalPosts = await getJournalList(2);
+  const socialPosts = await getSocialList(2);
 
   const processSteps = [
     {
